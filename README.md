@@ -127,17 +127,17 @@ This logger package
 
 *   Standardizes on key-value pair argument sequence
 
-    ```go
+```go
 log.Debug("inside Fn()", "key1", value1, "key2", value2)
 
 // instead of this
 log.WithFields(logrus.Fields{"m": "pkg", "key1": value1, "key2": value2}).Debug("inside fn()")
 ```
-    logxi logs `FIX_IMBALANCED_PAIRS =>` if key-value pairs are imbalanced
+logxi logs `FIX_IMBALANCED_PAIRS =>` if key-value pairs are imbalanced
 
-    `log.Warn and log.Error` are special cases and return error:
+`log.Warn and log.Error` are special cases and return error:
 
-    ```go
+```go
 return log.Error(msg)               //=> fmt.Errorf(msg)
 return log.Error(msg, "err", err)   //=> err
 ```
@@ -158,15 +158,13 @@ return log.Error(msg, "err", err)   //=> err
 
 *   Is suppressable in unit tests
 
-    ```go
+```go
 func TestErrNotFound() {
     log.Suppress(true)
     defer log.Suppress(false)
     ...
 }
 ```
-
-
 
 ## Configuration
 
